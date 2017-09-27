@@ -346,11 +346,13 @@ function dragula (initialContainers, options) {
 
       var immediate = getImmediateChild(target, elementBehindCursor);
       var reference = getReference(target, immediate, clientX, clientY);
-      var initial = isInitialPlacement(target, reference);
-      if (initial) {
-        return true; // should always be able to drop it right back where it was
-      }
-      return o.accepts(_item, target, _source, reference);
+
+      // this prevented to detect if an element hovers from its initial position right over its neighbour
+      // var initial = isInitialPlacement(target, reference);
+      // if (initial) {
+      //   return true; // should always be able to drop it right back where it was
+      // }
+      return o.accepts(_item, target, _source, reference, elementBehindCursor);
     }
   }
 
